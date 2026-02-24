@@ -1,0 +1,11 @@
+# 参考画像（著作権）
+design/references/
+
+# 内部ドキュメント
+design/design-system.md
+docs/
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
