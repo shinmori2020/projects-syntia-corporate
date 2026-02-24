@@ -572,8 +572,7 @@ img {
 
 .c-section-heading__en {
   display: block;
-  font-family: var(--font-family-en);
-  font-weight: 800;
+  font-weight: var(--fw-bold);
   font-size: clamp(0.75rem, 1.2vw, 0.875rem);
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -1614,7 +1613,7 @@ img {
   position: relative;
   display: flex;
   align-items: center;
-  min-height: 240px;
+  min-height: 320px;
   padding-top: var(--header-height-sp);
   overflow: hidden;
 }
@@ -1661,9 +1660,8 @@ img {
 
 .p-page-header__en {
   display: block;
-  font-family: var(--font-family-en);
-  font-size: clamp(2.5rem, 8vw, 5rem);
-  font-weight: 800;
+  font-size: clamp(1.75rem, 5vw, 3rem);
+  font-weight: var(--fw-bold);
   letter-spacing: 0.06em;
   line-height: 1.1;
   margin-bottom: var(--space-xs);
@@ -1780,8 +1778,7 @@ img {
 }
 
 .p-contact-form__form {
-  max-width: 720px;
-  margin: 0 auto;
+  width: 100%;
 }
 
 .p-contact-form__group {
@@ -2179,7 +2176,7 @@ img {
   }
 
   .p-page-header {
-    min-height: 340px;
+    min-height: 400px;
     padding-top: var(--header-height);
   }
 
