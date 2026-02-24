@@ -95,13 +95,28 @@
 
     <!-- ページヘッダー -->
     <section class="p-page-header">
-      <div class="p-page-header__bg"></div>
+      <div class="p-page-header__mv">
+        <div class="c-placeholder c-placeholder--page-header">
+          <svg class="c-placeholder__icon" aria-hidden="true" width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="1.5" opacity="0.4"><rect x="6" y="10" width="36" height="28" rx="3"/><circle cx="18" cy="22" r="4"/><path d="M6 34l10-8 6 4 10-10 10 8"/></svg>
+          <p class="c-placeholder__text" style="color: rgba(255,255,255,0.4)">ページヘッダー画像</p>
+        </div>
+      </div>
+      <div class="p-page-header__overlay"></div>
       <div class="l-container p-page-header__inner">
         <span class="p-page-header__en">Contact</span>
         <h1 class="p-page-header__title">お問い合わせ</h1>
-        <p class="p-page-header__sub">24時間365日対応　まずはお気軽にご相談ください</p>
       </div>
     </section>
+
+    <!-- パンくずリスト -->
+    <nav class="p-breadcrumb" aria-label="パンくずリスト">
+      <div class="l-container">
+        <ol class="p-breadcrumb__list">
+          <li class="p-breadcrumb__item"><a href="index.html" class="p-breadcrumb__link">ホーム</a></li>
+          <li class="p-breadcrumb__item"><span class="p-breadcrumb__current">お問い合わせ</span></li>
+        </ol>
+      </div>
+    </nav>
 
     <!-- 電話でのお問い合わせ -->
     <section class="l-section p-contact-phone">
