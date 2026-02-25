@@ -121,32 +121,12 @@ img {
 }
 
 .l-header__logo-img {
-  flex-shrink: 0;
-}
-
-.l-header__logo-img svg {
-  width: clamp(32px, 4vw, 52px);
-  height: clamp(32px, 4vw, 52px);
   display: block;
-}
-
-.l-header__logo-text {
-  display: flex;
-  flex-direction: column;
-}
-
-.l-header__logo-en {
-  font-weight: 700;
-  font-size: clamp(1.125rem, 2vw, 1.5rem);
-  color: var(--color-primary);
-  letter-spacing: 0.04em;
-}
-
-.l-header__logo-ja {
-  font-size: 0.6875rem;
-  color: var(--color-text-light);
-  letter-spacing: 0.08em;
-  margin-top: 1px;
+  width: clamp(200px, 22vw, 280px);
+  height: clamp(44px, 5.5vw, 60px);
+  object-fit: cover;
+  object-position: center;
+  flex-shrink: 0;
 }
 
 .l-header__right {
@@ -366,27 +346,12 @@ img {
 }
 
 .l-footer__logo-img {
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  line-height: 1;
-}
-
-.l-footer__logo-img svg {
   display: block;
-}
-
-.l-footer__logo-en {
-  font-weight: 800;
-  font-size: 1.5rem;
-  color: #fff;
-  line-height: 1;
-  letter-spacing: 0.04em;
-}
-
-.l-footer__company {
-  font-size: var(--fz-small);
-  margin-bottom: var(--space-xs);
+  width: clamp(200px, 22vw, 260px);
+  height: clamp(44px, 5.5vw, 56px);
+  object-fit: cover;
+  object-position: center;
+  flex-shrink: 0;
 }
 
 .l-footer__address {
@@ -705,13 +670,6 @@ img {
   background-color: #e8edf1;
 }
 
-.c-placeholder--logo {
-  min-height: 60px;
-  width: 80px;
-  border-radius: 6px;
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
 /* ================================================================
    Project
    ================================================================ */
@@ -805,16 +763,6 @@ img {
   gap: var(--space-sm);
 }
 
-.p-drawer__phone {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--color-text);
-  text-decoration: none;
-  font-size: 1.25rem;
-  font-weight: var(--fw-bold);
-}
-
 .p-drawer__btn {
   display: flex;
   align-items: center;
@@ -843,11 +791,6 @@ img {
 
 .p-drawer__btn--phone:hover {
   background-color: #d4e4f2;
-}
-
-.p-drawer__phone-note {
-  font-size: var(--fz-small);
-  color: var(--color-text-muted);
 }
 
 .p-drawer__note {
