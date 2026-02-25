@@ -94,7 +94,7 @@ img {
   left: 0;
   width: 100%;
   height: var(--header-height-sp);
-  background-color: rgba(255, 255, 255, 0.97);
+  background-color: #fff;
   z-index: 100;
   transition: box-shadow 0.3s ease;
 }
@@ -1941,6 +1941,160 @@ img {
   color: var(--color-text-light);
 }
 
+/* --- 会社概要：基本情報テーブル --- */
+.p-company-info__table-wrap {
+  overflow-x: auto;
+}
+
+.p-company-info__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fz-body);
+}
+
+.p-company-info__table th,
+.p-company-info__table td {
+  padding: var(--space-sm) var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+  text-align: left;
+  vertical-align: top;
+  line-height: 1.8;
+}
+
+.p-company-info__table tr:first-child th,
+.p-company-info__table tr:first-child td {
+  border-top: 1px solid var(--color-border);
+}
+
+.p-company-info__table th {
+  width: 160px;
+  font-weight: var(--fw-bold);
+  color: var(--color-primary);
+  background-color: var(--color-primary-light);
+  white-space: nowrap;
+}
+
+.p-company-info__pending {
+  display: inline-block;
+  color: var(--color-accent);
+  font-size: var(--fz-small);
+  font-weight: var(--fw-semibold);
+}
+
+/* --- 会社概要：代表挨拶 --- */
+.p-about {
+  background-color: var(--color-bg-sub);
+}
+
+.p-about__greeting {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.p-about__greeting-photo {
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.c-placeholder--greeting {
+  aspect-ratio: 3 / 4;
+  min-height: 0;
+  border-radius: 8px;
+}
+
+.p-about__greeting-name {
+  font-size: var(--fz-subheading);
+  font-weight: var(--fw-bold);
+  margin-bottom: var(--space-md);
+  color: var(--color-primary);
+}
+
+.p-about__greeting-text p {
+  margin-bottom: var(--space-sm);
+}
+
+.p-about__greeting-text p:last-child {
+  margin-bottom: 0;
+}
+
+.p-about__trust-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: var(--fw-semibold);
+  transition: color 0.25s ease;
+}
+
+.p-about__trust-link:hover {
+  color: var(--color-primary-dark);
+}
+
+.p-about__external-icon {
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+
+/* --- 会社概要：アクセス --- */
+.p-company-access__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.p-company-access__info-inner {
+  padding: var(--space-lg);
+  background-color: var(--color-bg-sub);
+  border-radius: 8px;
+  border: 1px solid var(--color-border-light);
+}
+
+.p-company-access__map {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--color-border-light);
+}
+
+.p-company-access__map iframe {
+  display: block;
+  width: 100%;
+  height: 320px;
+}
+
+.p-company-access__address {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: var(--fz-body);
+  color: var(--color-text);
+  line-height: 1.8;
+  margin-bottom: var(--space-sm);
+}
+
+.p-company-access__address svg {
+  flex-shrink: 0;
+  color: var(--color-primary);
+  margin-top: 4px;
+}
+
+.p-company-access__maps-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--fz-small);
+  font-weight: var(--fw-semibold);
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.p-company-access__maps-link:hover {
+  color: var(--color-primary-dark);
+}
+
 /* --- SP固定CTA --- */
 .p-fixed-cta {
   position: fixed;
@@ -2179,6 +2333,31 @@ img {
   .p-page-header {
     min-height: 400px;
     margin-top: var(--header-height);
+  }
+
+  /* 会社概要：代表挨拶 横並び */
+  .p-about__greeting {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .p-about__greeting-photo {
+    flex: 0 0 320px;
+    margin: 0;
+  }
+
+  .p-about__greeting-body {
+    flex: 1;
+  }
+
+  /* 会社概要：テーブルth幅 */
+  .p-company-info__table th {
+    width: 200px;
+  }
+
+  /* 会社概要：マップ高さ */
+  .p-company-access__map iframe {
+    height: 400px;
   }
 
   .p-contact-flow__steps {
