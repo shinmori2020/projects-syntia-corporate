@@ -1716,8 +1716,35 @@ img {
   text-align: center;
   font-size: var(--fz-body);
   color: var(--color-text-light);
-  margin-bottom: var(--space-xl);
+  margin-bottom: var(--space-lg);
   line-height: 1.8;
+}
+
+.p-contact-form__badges {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-sm);
+  list-style: none;
+  margin-bottom: var(--space-xl);
+  flex-wrap: wrap;
+}
+
+.p-contact-form__badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background-color: var(--color-primary-light);
+  border-radius: 100px;
+  font-size: var(--fz-small);
+  font-weight: var(--fw-semibold);
+  color: var(--color-primary);
+}
+
+.p-contact-form__badge-icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
 }
 
 .p-contact-form__form {
@@ -2038,6 +2065,335 @@ img {
   color: var(--color-primary-dark);
 }
 
+/* --- ページヘッダー サブテキスト --- */
+.p-page-header__sub {
+  font-size: var(--fz-body);
+  opacity: 0.8;
+  margin-top: var(--space-xs);
+  letter-spacing: 0.04em;
+}
+
+/* --- サービスナビゲーション --- */
+.p-service-nav {
+  background-color: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  top: var(--header-height-sp);
+  z-index: 50;
+}
+
+.p-service-nav__list {
+  display: flex;
+  list-style: none;
+  gap: 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.p-service-nav__list::-webkit-scrollbar {
+  display: none;
+}
+
+.p-service-nav__link {
+  display: block;
+  padding: 16px 20px;
+  font-size: var(--fz-small);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-light);
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.p-service-nav__link:hover,
+.p-service-nav__link.is-active {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+}
+
+/* --- サービス詳細（各サービスセクション） --- */
+.p-service-detail {
+  background-color: var(--color-bg);
+}
+
+.p-service-detail .l-container {
+  max-width: 1280px;
+}
+
+.p-service-detail--alt {
+  background-color: var(--color-bg-sub);
+}
+
+.p-service-detail__block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-lg);
+}
+
+.p-service-detail__photo {
+  width: 100%;
+}
+
+.c-placeholder--service {
+  aspect-ratio: 16 / 10;
+  min-height: 0;
+  border-radius: 8px;
+  background-color: #e4ecf3;
+}
+
+.p-service-detail__body {
+  flex: 1;
+}
+
+.p-service-detail__number {
+  margin-bottom: var(--space-sm);
+}
+
+.p-service-detail__number-text {
+  font-family: "Roboto", sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--color-primary);
+  opacity: 0.15;
+  line-height: 1;
+  letter-spacing: 0.04em;
+}
+
+.p-service-detail__title {
+  font-size: var(--fz-heading);
+  font-weight: var(--fw-bold);
+  color: var(--color-text);
+  margin-bottom: var(--space-sm);
+  padding-bottom: var(--space-sm);
+  border-bottom: 2px solid var(--color-primary);
+  display: inline-block;
+}
+
+.p-service-detail__desc {
+  font-size: var(--fz-body);
+  color: var(--color-text-light);
+  line-height: 1.9;
+  margin-bottom: var(--space-lg);
+}
+
+.p-service-detail__use-case {
+  background-color: var(--color-primary-light);
+  border-radius: 8px;
+  padding: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.p-service-detail--alt .p-service-detail__use-case {
+  background-color: #fff;
+}
+
+.p-service-detail__use-case-title {
+  font-size: var(--fz-body);
+  font-weight: var(--fw-bold);
+  color: var(--color-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.p-service-detail__use-case-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.p-service-detail__use-case-list li {
+  position: relative;
+  padding-left: 20px;
+  font-size: var(--fz-body);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+.p-service-detail__use-case-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+}
+
+/* BA写真 */
+.p-service-detail__ba {
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-lg);
+}
+
+.p-service-detail__ba-title {
+  font-size: var(--fz-body);
+  font-weight: var(--fw-bold);
+  color: var(--color-text);
+  text-align: center;
+  margin-bottom: var(--space-md);
+}
+
+.p-service-detail__ba-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+}
+
+.p-service-detail__ba-item {
+  flex: 1;
+  max-width: 400px;
+  text-align: center;
+}
+
+.c-placeholder--ba {
+  aspect-ratio: 4 / 3;
+  min-height: 0;
+  border-radius: 4px;
+  background-color: #e4ecf3;
+}
+
+.p-service-detail__ba-label {
+  display: block;
+  font-family: var(--font-family-en);
+  font-size: var(--fz-small);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-muted);
+  margin-top: 8px;
+  letter-spacing: 0.06em;
+}
+
+.p-service-detail__ba-arrow {
+  flex-shrink: 0;
+  color: var(--color-primary);
+}
+
+/* --- サービスページ：作業の流れ --- */
+.p-service-flow {
+  background-color: var(--color-bg-sub);
+}
+
+.p-service-flow__timeline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.p-service-flow__item {
+  display: flex;
+  width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: var(--color-bg);
+}
+
+.p-service-flow__step {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  background-color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.p-service-flow__step-num {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #fff;
+  letter-spacing: 0.02em;
+}
+
+.p-service-flow__content {
+  padding: 16px 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.p-service-flow__title {
+  font-size: 1rem;
+  font-weight: var(--fw-bold);
+  color: var(--color-text);
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+
+.p-service-flow__desc {
+  font-size: var(--fz-body);
+  color: var(--color-text-light);
+  line-height: 1.7;
+}
+
+.p-service-flow__connector {
+  display: flex;
+  justify-content: center;
+  padding: 8px 0;
+  color: var(--color-primary);
+}
+
+/* --- サービスページ：所要時間の目安 --- */
+.p-service-time {
+  background-color: var(--color-bg);
+}
+
+.p-service-time__table-wrap {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.p-service-time__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fz-body);
+}
+
+.p-service-time__table th,
+.p-service-time__table td {
+  padding: var(--space-sm) var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+  text-align: center;
+  line-height: 1.8;
+}
+
+.p-service-time__table thead th {
+  background-color: var(--color-primary);
+  color: #fff;
+  font-weight: var(--fw-bold);
+  border-bottom: none;
+}
+
+.p-service-time__table thead th:first-child {
+  border-radius: 4px 0 0 0;
+}
+
+.p-service-time__table thead th:last-child {
+  border-radius: 0 4px 0 0;
+}
+
+.p-service-time__table tbody td:first-child {
+  font-weight: var(--fw-bold);
+  color: var(--color-primary);
+  background-color: var(--color-primary-light);
+}
+
+.p-service-time__table tbody tr:first-child td {
+  border-top: none;
+}
+
+.p-service-time__note {
+  margin-top: var(--space-sm);
+  font-size: var(--fz-small);
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
 /* --- SP固定CTA --- */
 .p-fixed-cta {
   position: fixed;
@@ -2165,6 +2521,10 @@ img {
 
   .p-contact-flow__steps {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .p-service-nav__link {
+    padding: 16px 16px;
   }
 }
 
@@ -2305,6 +2665,53 @@ img {
 
   .p-contact-flow__steps {
     grid-template-columns: repeat(4, 1fr);
+  }
+
+  /* サービスナビ：768px+ */
+  .p-service-nav {
+    top: var(--header-height);
+  }
+
+  .p-service-nav__list {
+    justify-content: center;
+  }
+
+  .p-service-nav__link {
+    padding: 18px 28px;
+    font-size: var(--fz-body);
+  }
+
+  /* サービス詳細：横並び */
+  .p-service-detail__block {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: var(--space-xl);
+  }
+
+  .p-service-detail__photo {
+    flex: 0 0 45%;
+    max-width: 480px;
+  }
+
+  .p-service-detail__block--reverse {
+    flex-direction: row-reverse;
+  }
+
+  /* サービスフロー：768px+ */
+  .p-service-flow__step {
+    width: 72px;
+  }
+
+  .p-service-flow__step-num {
+    font-size: 1.125rem;
+  }
+
+  .p-service-flow__content {
+    padding: 20px 28px;
+  }
+
+  .p-service-flow__title {
+    font-size: 1.125rem;
   }
 
   .l-footer__nav-list {
