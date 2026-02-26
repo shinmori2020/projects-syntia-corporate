@@ -124,8 +124,8 @@ img {
   display: block;
   width: clamp(200px, 22vw, 280px);
   height: clamp(44px, 5.5vw, 60px);
-  object-fit: cover;
-  object-position: center;
+  object-fit: contain;
+  object-position: left center;
   flex-shrink: 0;
 }
 
@@ -349,8 +349,8 @@ img {
   display: block;
   width: clamp(200px, 22vw, 260px);
   height: clamp(44px, 5.5vw, 56px);
-  object-fit: cover;
-  object-position: center;
+  object-fit: contain;
+  object-position: left center;
   flex-shrink: 0;
 }
 
