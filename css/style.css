@@ -1947,6 +1947,378 @@ img {
   font-weight: var(--fw-semibold);
 }
 
+/* --- 会社概要：資格・認定証 --- */
+.p-company-cert {
+  background-color: var(--color-bg-sub);
+}
+
+.p-company-cert__group {
+  margin-bottom: var(--space-xl);
+}
+
+.p-company-cert__group:last-child {
+  margin-bottom: 0;
+}
+
+.p-company-cert__group-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--fz-subheading);
+  font-weight: var(--fw-bold);
+  color: var(--color-primary);
+  margin-bottom: var(--space-md);
+  padding-bottom: var(--space-xs);
+  border-bottom: 2px solid var(--color-border-light);
+}
+
+.p-company-cert__grid {
+  display: grid;
+  gap: var(--space-md);
+  list-style: none;
+}
+
+/* 賞状タイプ: SP 1列 */
+.p-company-cert__grid--certificate {
+  grid-template-columns: 1fr;
+}
+
+/* カードタイプ: SP 2列 */
+.p-company-cert__grid--card {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.p-company-cert__card {
+  background-color: var(--color-bg);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.p-company-cert__card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+/* 画像ボタン（クリック領域） */
+.p-company-cert__img-btn {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.p-company-cert__img-wrap {
+  width: 100%;
+}
+
+.p-company-cert__img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 賞状タイプ（縦長A4） */
+.c-placeholder--cert-portrait {
+  aspect-ratio: 3 / 4;
+  min-height: 0;
+  border-radius: 0;
+}
+
+/* カードタイプ（横長ID） */
+.c-placeholder--cert-landscape {
+  aspect-ratio: 16 / 10;
+  min-height: 0;
+  border-radius: 0;
+}
+
+/* ホバー時の暗転オーバーレイ */
+.p-company-cert__img-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0);
+  transition: background-color 0.3s ease;
+  pointer-events: none;
+}
+
+.p-company-cert__img-btn:hover::after,
+.p-company-cert__img-btn:focus-visible::after {
+  background-color: rgba(0, 0, 0, 0.35);
+}
+
+/* 拡大ヒント（中央表示） */
+.p-company-cert__zoom-hint {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: var(--fw-semibold);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.p-company-cert__img-btn:hover .p-company-cert__zoom-hint,
+.p-company-cert__img-btn:focus-visible .p-company-cert__zoom-hint {
+  opacity: 1;
+}
+
+.p-company-cert__body {
+  padding: var(--space-sm);
+  text-align: center;
+}
+
+.p-company-cert__name {
+  font-size: var(--fz-body);
+  font-weight: var(--fw-bold);
+  color: var(--color-text);
+  margin-bottom: 4px;
+}
+
+.p-company-cert__number {
+  font-family: "Roboto", sans-serif;
+  font-size: var(--fz-small);
+  font-weight: 500;
+  color: var(--color-text-light);
+}
+
+@media (min-width: 768px) {
+  /* 賞状タイプ: PC 2列 */
+  .p-company-cert__grid--certificate {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+  }
+
+  /* カードタイプ: PC 3列 */
+  .p-company-cert__grid--card {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+  }
+
+  .p-company-cert__body {
+    padding: var(--space-sm) var(--space-md);
+  }
+}
+
+/* --- 資格画像モーダル --- */
+.p-cert-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.p-cert-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.p-cert-modal__overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.p-cert-modal__content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+
+.p-cert-modal.is-open .p-cert-modal__content {
+  transform: scale(1);
+}
+
+/* フレーム: 画像を囲む相対配置コンテナ */
+.p-cert-modal__frame {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 80vh;
+}
+
+/* 閉じるボタン: 画像の右上角に重ねる */
+.p-cert-modal__close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(40%, -40%);
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.65);
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  z-index: 2;
+}
+
+.p-cert-modal__close:hover,
+.p-cert-modal__close:focus-visible {
+  background-color: rgba(60, 60, 60, 0.85);
+  outline: none;
+}
+
+.p-cert-modal__img-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 80vh;
+}
+
+.p-cert-modal__img {
+  max-width: 80vw;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  display: block;
+}
+
+.p-cert-modal__placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min(360px, 70vw);
+  aspect-ratio: 3 / 4;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  color: #999;
+  font-size: var(--fz-body);
+}
+
+/* ナビゲーションボタン: 画像の左右に絶対配置 */
+.p-cert-modal__nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  z-index: 1;
+}
+
+.p-cert-modal__nav-btn--prev {
+  left: 10px;
+}
+
+.p-cert-modal__nav-btn--next {
+  right: 10px;
+}
+
+.p-cert-modal__nav-btn:hover,
+.p-cert-modal__nav-btn:focus-visible {
+  background-color: rgba(60, 60, 60, 0.7);
+  outline: none;
+}
+
+.p-cert-modal__caption {
+  color: #fff;
+  font-size: var(--fz-small);
+  margin-top: var(--space-sm);
+  text-align: center;
+}
+
+.p-cert-modal__nav-count {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: var(--fz-small);
+  margin-top: 6px;
+  text-align: center;
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .p-cert-modal__content {
+    max-width: 70vw;
+  }
+
+  .p-cert-modal__img {
+    max-width: 65vw;
+  }
+
+  .p-cert-modal__close {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+  }
+
+  .p-cert-modal__nav-btn {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+  }
+
+  .p-cert-modal__nav-btn--prev {
+    left: 12px;
+  }
+
+  .p-cert-modal__nav-btn--next {
+    right: 12px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .p-cert-modal__content {
+    max-width: 80vw;
+    max-height: 92vh;
+  }
+
+  .p-cert-modal__frame {
+    max-height: 82vh;
+  }
+
+  .p-cert-modal__img {
+    max-width: 75vw;
+    max-height: 82vh;
+  }
+
+  .p-cert-modal__img-wrap {
+    max-height: 82vh;
+  }
+}
+
 /* --- 会社概要：代表挨拶 --- */
 .p-about {
   background-color: var(--color-bg-sub);
