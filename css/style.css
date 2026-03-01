@@ -239,6 +239,7 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 6px;
   padding: 0 clamp(1rem, 2vw, 3rem);
   height: 100%;
   background-color: var(--color-primary);
@@ -248,7 +249,16 @@ img {
   text-decoration: none;
   letter-spacing: 0.08em;
   white-space: nowrap;
+  line-height: 1;
   transition: background-color 0.25s ease;
+}
+
+.l-header__contact-icon {
+  display: block;
+  flex-shrink: 0;
+  width: 1.2em;
+  height: 1.2em;
+  margin-top: 3px;
 }
 
 .l-header__contact-btn:hover {
@@ -1521,30 +1531,73 @@ img {
   margin-bottom: var(--space-lg);
 }
 
-.p-cta-section__phone {
-  margin-bottom: var(--space-lg);
+.p-cta-section__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.p-cta-section__phone-number,
+.p-cta-section__actions .c-btn--cta-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 280px;
+  height: 60px;
+  padding: 0 24px;
+  background-color: #fff;
+  border: none;
+  border-radius: 8px;
+  color: var(--color-primary);
+  text-decoration: none;
+  font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.25s ease;
 }
 
 .p-cta-section__phone-number {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  color: #fff;
-  text-decoration: none;
-  font-family: var(--font-family-en);
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
-  font-weight: 800;
+  font-family: "Roboto", sans-serif;
   letter-spacing: 0.03em;
-  transition: opacity 0.25s ease;
 }
 
-.p-cta-section__phone-number:hover { opacity: 0.85; }
+.p-cta-section__phone-number svg,
+.p-cta-section__actions .c-btn--cta-primary svg {
+  flex-shrink: 0;
+}
 
-.p-cta-section__phone-note {
-  display: block;
+.p-cta-section__phone-number:hover,
+.p-cta-section__actions .c-btn--cta-primary:hover {
+  background-color: var(--color-primary-light);
+  transform: none;
+}
+
+@media (min-width: 768px) {
+  .p-cta-section__actions {
+    flex-direction: row;
+    justify-content: center;
+    gap: var(--space-lg);
+  }
+}
+
+.p-cta-section__badges {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-sm) var(--space-md);
+  flex-wrap: wrap;
+  margin-top: var(--space-md);
+  list-style: none;
+}
+
+.p-cta-section__badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   font-size: var(--fz-small);
-  opacity: 0.6;
-  margin-top: 4px;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 /* --- ページヘッダー（下層共通） --- */
@@ -2491,7 +2544,7 @@ img {
 }
 
 .p-service-detail--alt {
-  background-color: var(--color-bg-sub);
+  background-color: #f9fbfc;
 }
 
 .p-service-detail__block {
@@ -2640,6 +2693,199 @@ img {
   color: var(--color-primary);
 }
 
+/* BA 開くボタン */
+.c-ba-open-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  border: 1.5px solid var(--color-primary);
+  border-radius: 6px;
+  background-color: transparent;
+  color: var(--color-primary);
+  font-size: var(--fz-body);
+  font-weight: var(--fw-semibold);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.c-ba-open-btn:hover {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+.c-ba-open-btn__icon {
+  flex-shrink: 0;
+}
+
+/* BA モーダル */
+.p-ba-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.p-ba-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.p-ba-modal__overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.p-ba-modal__content {
+  position: relative;
+  width: 90vw;
+  max-width: 900px;
+  max-height: 90vh;
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+
+.p-ba-modal.is-open .p-ba-modal__content {
+  transform: scale(1);
+}
+
+/* ヘッダー */
+.p-ba-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.p-ba-modal__title {
+  font-size: var(--fz-body);
+  font-weight: var(--fw-bold);
+  color: var(--color-text);
+  margin: 0;
+}
+
+.p-ba-modal__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border-radius: 50%;
+  border: none;
+  background-color: transparent;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.p-ba-modal__close:hover {
+  background-color: var(--color-bg-sub);
+}
+
+/* タブ（SPのみ表示） */
+.p-ba-modal__tabs {
+  display: flex;
+  padding: 0 20px;
+  gap: 0;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.p-ba-modal__tab {
+  flex: 1;
+  padding: 10px 0;
+  border: none;
+  background-color: transparent;
+  font-family: var(--font-family-en);
+  font-size: var(--fz-small);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+  letter-spacing: 0.06em;
+}
+
+.p-ba-modal__tab.is-active {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+}
+
+/* 画像エリア */
+.p-ba-modal__images {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 0;
+  overflow-y: auto;
+}
+
+.p-ba-modal__img-col {
+  flex: 1;
+  display: none;
+}
+
+.p-ba-modal__img-col.is-active {
+  display: block;
+}
+
+.p-ba-modal__img-label {
+  display: none;
+  font-family: var(--font-family-en);
+  font-size: var(--fz-small);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-muted);
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+}
+
+.p-ba-modal__img-wrap {
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.c-placeholder--ba-modal {
+  aspect-ratio: 4 / 3;
+  min-height: 0;
+  border-radius: 0;
+  background-color: #e4ecf3;
+}
+
+/* PC: 横並び・タブ非表示 */
+@media (min-width: 768px) {
+  .p-ba-modal__tabs {
+    display: none;
+  }
+
+  .p-ba-modal__images {
+    flex-direction: row;
+    gap: 20px;
+    padding: 24px;
+  }
+
+  .p-ba-modal__img-col,
+  .p-ba-modal__img-col[data-ba-col="after"] {
+    display: block;
+    flex: 1;
+  }
+
+  .p-ba-modal__img-label {
+    display: block;
+  }
+}
+
 /* --- サービスページ：作業の流れ --- */
 .p-service-flow {
   background-color: var(--color-bg-sub);
@@ -2711,55 +2957,152 @@ img {
   background-color: var(--color-bg);
 }
 
-.p-service-time__table-wrap {
-  max-width: 640px;
-  margin: 0 auto;
-}
-
-.p-service-time__table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: var(--fz-body);
-}
-
-.p-service-time__table th,
-.p-service-time__table td {
-  padding: var(--space-sm) var(--space-md);
-  border-bottom: 1px solid var(--color-border);
+.p-service-time__lead {
   text-align: center;
-  line-height: 1.8;
+  font-size: var(--fz-body);
+  color: var(--color-text-light);
+  margin-bottom: var(--space-lg);
 }
 
-.p-service-time__table thead th {
-  background-color: var(--color-primary);
-  color: #fff;
-  font-weight: var(--fw-bold);
-  border-bottom: none;
+.p-service-time__cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-sm);
 }
 
-.p-service-time__table thead th:first-child {
-  border-radius: 4px 0 0 0;
+.p-service-time__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: var(--space-md) var(--space-sm);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border-light);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.p-service-time__table thead th:last-child {
-  border-radius: 0 4px 0 0;
+.p-service-time__card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
 }
 
-.p-service-time__table tbody td:first-child {
+.p-service-time__room {
+  font-size: var(--fz-small);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-light);
+  letter-spacing: 0.04em;
+}
+
+.p-service-time__duration {
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
   font-weight: var(--fw-bold);
   color: var(--color-primary);
-  background-color: var(--color-primary-light);
+  letter-spacing: 0.02em;
+  margin-top: 4px;
 }
 
-.p-service-time__table tbody tr:first-child td {
-  border-top: none;
+.p-service-time__label {
+  font-size: 0.6875rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.08em;
 }
 
 .p-service-time__note {
-  margin-top: var(--space-sm);
+  margin-top: var(--space-md);
   font-size: var(--fz-small);
   color: var(--color-text-muted);
   text-align: center;
+}
+
+.p-service-time__divider {
+  width: 40px;
+  height: 2px;
+  background-color: var(--color-border);
+  margin: clamp(2rem, 5vw, 3rem) auto;
+}
+
+.p-service-time__sub-heading {
+  margin-bottom: var(--space-md);
+  font-size: var(--fz-subheading);
+  font-weight: var(--fw-bold);
+  text-align: center;
+  color: var(--color-text);
+}
+
+.p-service-time__service-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-sm);
+}
+
+.p-service-time__service-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border-light);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.p-service-time__service-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.p-service-time__service-icon-wrap {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+}
+
+.p-service-time__service-icon {
+  display: block;
+}
+
+.p-service-time__service-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.p-service-time__service-name {
+  margin-bottom: 4px;
+  font-size: var(--fz-body);
+  font-weight: var(--fw-bold);
+  color: var(--color-text);
+}
+
+.p-service-time__service-desc {
+  font-size: var(--fz-small);
+  color: var(--color-text-light);
+  line-height: 1.7;
+}
+
+@media (min-width: 600px) {
+  .p-service-time__cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .p-service-time__service-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .p-service-time__cards {
+    grid-template-columns: repeat(5, 1fr);
+  }
 }
 
 /* --- SP固定CTA --- */

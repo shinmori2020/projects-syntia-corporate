@@ -273,4 +273,80 @@
     });
   });
 
+  // ============================================================
+  // Before/After モーダル
+  // ============================================================
+  var baModal = document.getElementById('js-ba-modal');
+  var baModalOverlay = document.getElementById('js-ba-modal-overlay');
+  var baModalClose = document.getElementById('js-ba-modal-close');
+  var baModalTitle = document.getElementById('js-ba-modal-title');
+  var baModalTabs = document.getElementById('js-ba-modal-tabs');
+
+  function openBaModal(title) {
+    if (!baModal) return;
+    if (baModalTitle) baModalTitle.textContent = title || '施工事例';
+    // Beforeタブをデフォルトで選択
+    switchBaTab('before');
+    baModal.classList.add('is-open');
+    baModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    baModalClose.focus();
+  }
+
+  function closeBaModal() {
+    if (!baModal) return;
+    baModal.classList.remove('is-open');
+    baModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  function switchBaTab(tab) {
+    if (!baModal) return;
+    // タブの切り替え
+    var tabs = baModal.querySelectorAll('.p-ba-modal__tab');
+    tabs.forEach(function (t) {
+      t.classList.toggle('is-active', t.getAttribute('data-ba-tab') === tab);
+    });
+    // カラムの切り替え
+    var cols = baModal.querySelectorAll('.p-ba-modal__img-col');
+    cols.forEach(function (col) {
+      var colName = col.getAttribute('data-ba-col');
+      if (colName === tab) {
+        col.classList.add('is-active');
+      } else {
+        col.classList.remove('is-active');
+      }
+    });
+  }
+
+  if (baModal) {
+    // 開くボタン
+    document.querySelectorAll('.js-ba-open').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var title = btn.getAttribute('data-ba-title') || '';
+        openBaModal(title);
+      });
+    });
+
+    // 閉じる
+    baModalClose.addEventListener('click', closeBaModal);
+    baModalOverlay.addEventListener('click', closeBaModal);
+
+    // タブ切り替え
+    if (baModalTabs) {
+      baModalTabs.addEventListener('click', function (e) {
+        var tab = e.target.closest('.p-ba-modal__tab');
+        if (!tab) return;
+        switchBaTab(tab.getAttribute('data-ba-tab'));
+      });
+    }
+
+    // Escキーで閉じる
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && baModal.classList.contains('is-open')) {
+        closeBaModal();
+      }
+    });
+  }
+
 })();
