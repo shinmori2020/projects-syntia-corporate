@@ -115,6 +115,13 @@
     });
 
     ctaObserver.observe(heroSection);
+  } else if (fixedCta && !heroSection) {
+    // 下層ページ：スクロール200pxで表示
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > 200) {
+        fixedCta.classList.add('is-visible');
+      }
+    }, { passive: true });
   }
 
   // ============================================================
@@ -348,5 +355,69 @@
       }
     });
   }
+
+  // ============================================================
+  // FAQ アコーディオン スムースアニメーション
+  // ============================================================
+  var faqItems = document.querySelectorAll('.p-price-faq__item');
+
+  faqItems.forEach(function (details) {
+    var summary = details.querySelector('.p-price-faq__question');
+    var answer = details.querySelector('.p-price-faq__answer');
+    if (!summary || !answer) return;
+
+    var isAnimating = false;
+
+    summary.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (isAnimating) return;
+      isAnimating = true;
+
+      if (details.open) {
+        // 閉じる
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+        answer.style.overflow = 'hidden';
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            answer.style.maxHeight = '0';
+            answer.style.paddingTop = '0';
+            answer.style.paddingBottom = '0';
+          });
+        });
+        answer.addEventListener('transitionend', function handler(evt) {
+          if (evt.propertyName !== 'max-height') return;
+          answer.removeEventListener('transitionend', handler);
+          details.open = false;
+          answer.style.overflow = '';
+          answer.style.maxHeight = '';
+          answer.style.paddingTop = '';
+          answer.style.paddingBottom = '';
+          isAnimating = false;
+        });
+      } else {
+        // 開く：先にmaxHeight:0を確定させてからopenする
+        answer.style.overflow = 'hidden';
+        answer.style.maxHeight = '0';
+        answer.style.paddingTop = '0';
+        answer.style.paddingBottom = '0';
+        details.open = true;
+        var targetHeight = answer.scrollHeight;
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            answer.style.maxHeight = targetHeight + 'px';
+            answer.style.paddingTop = '';
+            answer.style.paddingBottom = '';
+          });
+        });
+        answer.addEventListener('transitionend', function handler(evt) {
+          if (evt.propertyName !== 'max-height') return;
+          answer.removeEventListener('transitionend', handler);
+          answer.style.overflow = '';
+          answer.style.maxHeight = '';
+          isAnimating = false;
+        });
+      }
+    });
+  });
 
 })();
