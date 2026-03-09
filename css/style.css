@@ -980,6 +980,79 @@ img {
   100% { top: 100%; }
 }
 
+/* --- 現場の課題 --- */
+.p-challenge {
+  background-color: var(--color-bg-sub);
+}
+
+.p-challenge .c-section-heading {
+  margin-bottom: var(--space-lg);
+}
+
+.p-challenge__lead {
+  text-align: center;
+  color: var(--color-text-light);
+  font-size: var(--fz-body);
+  line-height: 1.8;
+  margin-bottom: var(--space-xl);
+}
+
+.p-challenge__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+}
+
+.p-challenge__card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  background-color: #fff;
+  border: 1px solid var(--color-border-light);
+  border-radius: 8px;
+  padding: var(--space-md);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.p-challenge__icon-wrap {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+.p-challenge__icon-wrap svg {
+  stroke: currentColor;
+}
+
+.p-challenge__text {
+  font-size: var(--fz-body);
+  line-height: 1.8;
+  color: var(--color-text);
+}
+
+.p-challenge__text strong {
+  color: var(--color-primary);
+  font-weight: var(--fw-bold);
+}
+
+.p-challenge__resolve {
+  text-align: center;
+  font-size: var(--fz-subheading);
+  font-weight: var(--fw-bold);
+  color: var(--color-primary);
+  margin-top: var(--space-xl);
+}
+
+.p-challenge__resolve strong {
+  color: var(--color-primary);
+}
+
 /* --- 強み --- */
 .p-strength {
   background-color: var(--color-bg);
@@ -1077,6 +1150,74 @@ img {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-md);
+}
+
+/* --- プロの品質基準 --- */
+.p-pro-standard {
+  background-color: var(--color-bg-sub);
+}
+
+.p-pro-standard .c-section-heading {
+  margin-bottom: var(--space-lg);
+}
+
+.p-pro-standard__lead {
+  text-align: center;
+  color: var(--color-text-light);
+  font-size: var(--fz-body);
+  line-height: 1.8;
+  margin-bottom: var(--space-xl);
+}
+
+.p-pro-standard__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.p-pro-standard__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  background-color: #fff;
+  border: 1px solid var(--color-border-light);
+  border-radius: 8px;
+  padding: var(--space-md);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.p-pro-standard__number {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  color: #fff;
+  font-family: var(--font-family-en);
+  font-weight: var(--fw-bold);
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+}
+
+.p-pro-standard__body {
+  flex: 1;
+}
+
+.p-pro-standard__label {
+  font-size: var(--fz-subheading);
+  font-weight: var(--fw-bold);
+  color: var(--color-primary);
+  margin-bottom: 4px;
+}
+
+.p-pro-standard__desc {
+  font-size: var(--fz-body);
+  color: var(--color-text-light);
+  line-height: 1.8;
 }
 
 /* --- 選ばれる理由 --- */
@@ -2469,6 +2610,17 @@ img {
   color: var(--color-primary);
 }
 
+.p-about__greeting-link {
+  color: var(--color-primary);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-primary);
+  transition: opacity 0.2s ease;
+}
+
+.p-about__greeting-link:hover {
+  opacity: 0.7;
+}
+
 .p-about__greeting-signature {
   margin-top: var(--space-lg);
   font-weight: var(--fw-bold);
@@ -3639,8 +3791,6 @@ img {
   .p-strength__grid {
     grid-template-columns: repeat(3, 1fr);
   }
-
-
 
   .p-service__grid {
     grid-template-columns: repeat(3, 1fr);
